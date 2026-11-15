@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="__CSP__">
+  <title>Scrollport Audit</title>
+  <style>__CSS__</style>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <h1>Scrollport Audit</h1>
+    <p>Find the ancestor that controls a sticky element or a CSS view timeline.</p>
+  </header>
+  <div class="workbench">
+    <section class="panel" aria-labelledby="lab-title">
+      <div class="panel-head">
+        <h2 id="lab-title">Scroll test</h2>
+        <p>Synthetic layout. Scroll inside the pane or use the button.</p>
+      </div>
+      <div class="controls">
+        <label>Wrapper overflow
+          <select id="mode">
+            <option value="hidden">overflow-x: hidden</option>
+            <option value="clip">overflow: clip</option>
+            <option value="inner">overflow: auto · fixed height</option>
+          </select>
+        </label>
+        <button type="button" id="jump">Scroll 160 px</button>
+        <button type="button" id="reset">Reset</button>
+      </div>
+      <div id="outer" tabindex="0" aria-label="Synthetic outer scroll pane">
+        <div class="before">Outer scroll pane</div>
+        <div id="wrapper" data-mode="hidden" tabindex="0" aria-label="Synthetic inner wrapper">
+          <h3 id="sticky">Sticky heading</h3>
+          <div id="subject"><span>View timeline subject</span><div class="progress" aria-hidden="true"><i></i></div></div>
+          <div class="filler" aria-hidden="true"></div>
+        </div>
+        <div class="after">End of outer scroll pane</div>
+      </div>
+      <div class="readings">
+        <span id="offset">Outer 0 px · wrapper 0 px</span>
+        <span id="timeline">View timeline</span>
+      </div>
+    </section>
+    <section class="panel report" aria-labelledby="report-title">
+      <div class="panel-head">
+        <h2 id="report-title">Ancestor chain</h2>
+        <p>Computed overflow values from this browser.</p>
+      </div>
+      <div class="controls">
+        <label>Inspect
+          <select id="target">
+            <option value="sticky">Sticky heading</option>
+            <option value="subject">View timeline subject</option>
+          </select>
+        </label>
+        <label>Axis
+          <select id="axis">
+            <option value="block">Block</option>
+            <option value="inline">Inline</option>
+            <option value="x">Horizontal</option>
+            <option value="y">Vertical</option>
+          </select>
+        </label>
+      </div>
+      <div class="source" id="source" aria-live="polite">
+        <span>Nearest scrollport candidate</span>
+        <strong id="source-label"></strong>
+        <p id="explanation"></p>
+      </div>
+      <div class="table-wrap" tabindex="0" aria-label="Computed ancestor overflow">
+        <table>
+          <thead><tr><th scope="col">Ancestor</th><th scope="col">Overflow x / y</th><th scope="col">Range</th></tr></thead>
+          <tbody id="ancestors"></tbody>
+        </table>
+      </div>
+      <p id="insets"></p>
+    </section>
+  </div>
+</main>
+<script>__JS__</script>
+</body>
+</html>

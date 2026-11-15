@@ -1,0 +1,25 @@
+{
+  "name": "@4onv/scrollport-audit",
+  "version": "0.1.0",
+  "description": "Find the computed overflow ancestor that controls sticky positioning and view timelines.",
+  "type": "module",
+  "exports": "./src/audit.js",
+  "files": [
+    "src/audit.js",
+    "dist/scrollport-audit.js",
+    "dist/scrollport-audit.html"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "playwright test",
+    "check:package": "node scripts/check-package.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "repository": "github:4onv/scrollport-audit"
+}

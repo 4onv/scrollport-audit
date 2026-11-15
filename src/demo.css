@@ -1,0 +1,59 @@
+:root {
+  color-scheme: light;
+  color: #17332c;
+  background: #eef3f0;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  line-height: 1.45;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1260px; margin: auto; padding: 42px 32px 32px; }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 3.15rem); letter-spacing: -.055em; line-height: 1.08; }
+.intro { margin-bottom: 25px; }
+.intro p { color: #435a52; margin-top: 8px; }
+.workbench { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.panel { min-width: 0; background: #fff; border: 1px solid #cad8d0; border-radius: 16px; padding: 21px; box-shadow: 0 8px 24px #17332c09; }
+h2 { font-size: 1.3rem; letter-spacing: -.025em; }
+.panel-head p { font-size: .88rem; color: #4d645a; margin-top: 4px; }
+.controls { display: flex; flex-wrap: wrap; gap: 9px; align-items: end; margin: 16px 0; }
+label { display: grid; min-width: 0; gap: 5px; font-weight: 600; font-size: .78rem; }
+select, button { min-height: 38px; border-radius: 7px; border: 1px solid #b7c8be; color: #17332c; font: inherit; padding: 7px 10px; }
+select { max-width: 100%; background: #f8fbfa; }
+button { font-size: .82rem; font-weight: 650; cursor: pointer; background: #edf6f1; }
+button:hover { background: #daeee3; }
+:focus-visible { outline: 2px solid #007458; outline-offset: 3px; }
+#outer { border: 1px solid #95b3a4; height: 340px; overflow: auto; background: #f6faf8; border-radius: 9px; }
+.before, .after { height: 108px; display: grid; place-items: center; color: #52695f; font-size: .86rem; font-weight: 650; }
+#wrapper { background: #e6f0eb; border-inline: 3px solid #78a790; }
+#wrapper[data-mode="hidden"] { overflow-x: hidden; }
+#wrapper[data-mode="clip"] { overflow: clip; }
+#wrapper[data-mode="inner"] { overflow: auto; height: 240px; }
+#sticky { position: sticky; top: 0; z-index: 1; background: #174f41; color: #fff; font-size: 1.05rem; padding: 11px 13px; }
+#subject { background: #fff; border: 1px solid #aac6b8; border-radius: 9px; padding: 12px; margin: 93px 14px 0; font-size: .84rem; }
+.progress { background: #e0eae5; height: 8px; border-radius: 8px; margin-top: 10px; overflow: clip; }
+.progress i { display: block; background: #226c57; height: 100%; transform: scaleX(0); transform-origin: left; }
+@supports ((animation-timeline: view()) and (view-timeline-name: --entry)) {
+  #subject { view-timeline-name: --entry; }
+  .progress i { animation: fill linear both; animation-timeline: --entry; }
+}
+@keyframes fill { to { transform: scaleX(1); } }
+.filler { height: 245px; background: repeating-linear-gradient(0deg, transparent 0 26px, #d7e5dc 26px 27px); margin: 14px; }
+.readings { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; padding-top: 10px; font-size: .78rem; color: #4d645a; }
+.source { border: 1px solid #a8c7b6; background: #e9f5ee; border-radius: 9px; padding: 11px 12px; }
+.source[data-warning="true"] { border-color: #d5b17e; background: #fff5e5; }
+.source span { color: #465c52; font-size: .8rem; }
+.source strong { display: block; font-size: 1.05rem; margin-block: 2px; overflow-wrap: anywhere; }
+.source p { font-size: .83rem; }
+.table-wrap { margin-top: 14px; max-height: 239px; overflow: auto; }
+table { border-collapse: collapse; width: 100%; text-align: left; font-size: .8rem; }
+th { color: #50685e; background: #f2f7f4; position: sticky; inset-block-start: 0; }
+th, td { border-bottom: 1px solid #e1eae5; padding: 7px 8px; }
+td:first-child { overflow-wrap: anywhere; }
+td span { display: block; font-size: .7rem; color: #50685e; }
+tr[data-source="true"] { background: #eef7f2; }
+code { font-family: "IBM Plex Mono", Consolas, monospace; }
+#insets { margin-top: 11px; color: #50685e; font-size: .78rem; }
+@media (max-width: 830px) { .workbench { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 440px) { main { padding: 23px 12px; } .panel { padding: 13px; } th, td { padding: 6px; } }
+@media (prefers-reduced-motion: reduce) { .progress i { animation: none; } }
