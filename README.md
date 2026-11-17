@@ -38,14 +38,14 @@ When a wrapper only clips decoration, try `overflow: clip` in DevTools and compa
 
 The audit models ordinary light-DOM HTML ancestry in standards mode. Its source is a diagnostic candidate. Specialized layout rules involving shadow roots, SVG, table boxes, out-of-flow descendants, containment, and clipping can require a closer browser inspection. It does not resolve a named timeline from an animation element, guarantee that a sticky element will stick, or measure every cause of an inactive animation.
 
-The demo enables the animation where CSS view timelines are available and respects reduced motion. Chromium and Firefox verify the real sticky geometry. The test suite checks whether timeline progress responds to scrolling. A timeline that cannot advance may appear inactive or stay at a fixed percentage depending on the browser. [November 14 research and idea comparison](docs/research-2026-11-14.md)
+The demo enables the animation where CSS view timelines are available and respects reduced motion. Playwright verifies sticky geometry and the view-timeline demo in Chromium, Firefox, and WebKit. Timeline-capable engines must show scroll-driven progress, while other engines must show the unavailable state. Safari on Apple devices remains a separate verification target. [Playwright browser coverage](https://playwright.dev/docs/browsers#webkit) · [November 14 research and idea comparison](docs/research-2026-11-14.md)
 
 ## Build and test
 
 ```sh
 npm ci --ignore-scripts
 npm run build
-npx playwright install chromium firefox
+npx playwright install chromium firefox webkit
 npm test
 ```
 

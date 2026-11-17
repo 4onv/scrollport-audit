@@ -24,7 +24,7 @@ jobs:
       - run: npm pack --ignore-scripts
       - run: npm run check:package
   browsers:
-    name: Chromium and Firefox layout verification
+    name: Chromium, Firefox and WebKit layout verification
     runs-on: ubuntu-latest
     timeout-minutes: 10
     container:
